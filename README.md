@@ -3,10 +3,10 @@ szakdolgozat
 
 a futtatáshoz kell:
 
-Node js - localhost:3000-ren fut jelentleg nálam
+Node js - https://nodejs.org/en/download/
 
-Express js
+Express js - http://expressjs.com/en/starter/installing.html
 
-package.json -ban lévő dolgok -> ha már van node -> npm i paranccsal
+package.json -ban lévő dolgok -> ha már van node -> 'npm i --save' paranccsal letölti az összes szükséges modult
 
-  net-snmp node module útmutató: https://www.npmjs.com/package/net-snmp 
+git clone 
