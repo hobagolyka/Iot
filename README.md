@@ -3,9 +3,7 @@ szakdolgozat
 
 a futtatáshoz kell:
 
-Node js
-
-  localhost:3000-ren fut jelentleg nálam
+Node js - localhost:3000-ren fut jelentleg nálam
 
 Express js
 
