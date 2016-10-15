@@ -47,6 +47,7 @@ app.use(function (req, res, next) {
  * Include all the routes
  */
 require('./routes/outside')(app);
+//require('./routes/dashboard')(app);
 
 /**
  * Standard error handler

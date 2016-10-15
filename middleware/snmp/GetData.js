@@ -2,7 +2,7 @@ var snmp = require ("net-snmp");
 
 module.exports = function () {
 
-    return function (req, res) {
+    return function (req, res, next) {
         console.log("hello");
         var session = snmp.createSession ("127.0.0.1", "public");
 
@@ -24,6 +24,7 @@ module.exports = function () {
             if (error)
                 console.error (error);
         });
+        return next();
     };
 
 };

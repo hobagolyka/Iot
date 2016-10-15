@@ -4,20 +4,13 @@
   "description": "Szakdolgozat",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "jscs": "jscs middleware models routes test index.js",
-    "jshint": "jshint middleware models routes test index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hobagolyka/Iot.git"
   },
   "author": "Tóth Judit",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/VITMAV42/mintahazi2015osz/issues"
-  },
   "homepage": "https://github.com/hobagolyka/Iot",
   "dependencies": {
     "body-parser": "^1.15.1",
