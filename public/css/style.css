@@ -1,0 +1,104 @@
+.nav-menu-1{
+    background: #EDEDED;
+}
+
+.nav-menu-2{
+    background: #ffe6b3;
+}
+
+.right_col.rest-2{
+    background: #fff7e6 !important;
+}
+
+.right_col.rest-2 .breadcrumb{
+    background: #fff7e6 !important;
+}
+
+button, .buttons, .btn, .modal-footer .btn+.btn{
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+.nav_menu li.active a{
+    background:#D9DEE4
+}
+
+.nav-menu-2 li.active a, .nav-menu-2 li a:hover, .nav-menu-2 li a:active, .nav-menu-2 li:hover{
+    background: #ffd480;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    vertical-align: middle;
+}
+
+.margint15{
+    margin-top: 15px;
+}
+
+html, body, .container.body, .main_container, .right_col{
+    min-height: 100%;
+    height: auto;
+}
+
+.label-dark{
+    color: #E9EDEF;
+    background-color: #4B5F71;
+    border-color: #364B5F;
+}
+
+.label-orange{
+    color: #E9EDEF;
+    background-color: #F57C00;
+    border-color: #E65100;
+}
+
+.ui-sortable-helper {
+    display: table;
+}
+
+.daterangepicker .calendar.left{
+    float: left !important;
+}
+
+.checkbox label{
+    padding-left: 0;
+}
+
+.left_col{
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.foo {
+    float: left;
+    width: 54px;
+    height: 24px;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.statusgreen {
+    background: #37ff0f;
+}
+
+.statusyellow {
+    background: #ddd120;
+}
+
+.statusorange {
+    background: #ff9b0a;
+}
+
+.statusred {
+     background: #ae0c00;
+}
+
+.statusblack {
+      background: #000000;
+}
+
+.state {
+    padding-top: 7px;
+}
