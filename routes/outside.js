@@ -1,5 +1,6 @@
 var renderMW = require('../middleware/generic/render');
 var getdataMW = require('../middleware/snmp/GetData');
+var getdbdataMW = require('../middleware/data/getData');
 
 module.exports = function (app) {
    /**
@@ -28,6 +29,15 @@ module.exports = function (app) {
     * Devices
     */
    app.use('/devices',
+       getdbdataMW(),
        renderMW('asd', 'devices')
+   );
+
+   /**
+    * Map
+    */
+   app.use('/map',
+       getdbdataMW(),
+       renderMW('Map', 'map')
    );
 };

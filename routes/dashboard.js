@@ -16,7 +16,7 @@ module.exports = function (app) {
     app.use('/dashboard',
         getdataMW(),
         setactiveMW('dashboard'),
-        renderMW('asd', 'dashboard')
+        renderMW('Dashboard', 'dashboard')
     );
     
     /**
@@ -24,7 +24,7 @@ module.exports = function (app) {
      */
     app.use('/devices/new_device',
         setactiveMW('new_device'),
-        renderMW('asd', 'new_device')
+        renderMW('New device', 'new_device')
     );
     
     /**
@@ -32,6 +32,14 @@ module.exports = function (app) {
      */
     app.use('/devices',
         setactiveMW('devices'),
-        renderMW('asd', 'devices')
+        renderMW('Devices', 'devices')
+    );
+
+    /**
+     * Map
+     */
+    app.use('/map',
+        setactiveMW('map'),
+        renderMW('Map', 'map')
     );
 };

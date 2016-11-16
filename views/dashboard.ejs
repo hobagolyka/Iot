@@ -1,82 +1,41 @@
 <% include header %>
-        <!-- page content -->
-        <div class="right_col">
-            <h2>
-            Valós idejű IoT mérőrendszer Node.js alapokon<br>
-            Real time IoT system based on Node.js
-            </h2>
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="dashboard_graph">
+<% include navbar %>
+            <!-- main area -->
+            <div class="col-xs-12 col-sm-9">
+                <h1><span class="glyphicon glyphicon-dashboard"></span> Dashboard</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in nisi eu arcu tempus vehicula.
+                    Nulla faucibus cursus metus in sagittis. Nunc elit leo, imperdiet in ligula in, euismod varius est.
+                    Aenean pellentesque lorem a porttitor placerat. Vestibulum placerat nunc ac rutrum fringilla. Donec
+                    arcu leo, tempus adipiscing volutpat id, congue in purus. Pellentesque scelerisque mattis nibh vel
+                    semper. Sed a risus purus. Fusce pulvinar, velit eget rhoncus facilisis, enim elit vulputate nisl, a
+                    euismod diam metus eu enim. Nullam congue justo vitae justo accumsan, sit amet malesuada nulla sagittis.
+                    Nam neque tellus, tristique in est vel, sagittis congue turpis. Aliquam nulla lacus, laoreet dapibus
+                    odio vitae, posuere volutpat magna. Nam pulvinar lacus in sapien feugiat, sit amet vestibulum enim
+                    eleifend. Integer sit amet ante auctor, lacinia sem quis, consectetur nulla.</p>
 
-                    <div class="row x_title">
-                        <div class="col-md-6">
-                            <h3>Network Activities <small>Graph title sub-title</small></h3>
-                        </div>
-                        <div class="col-md-6">
-                            <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                <span>September 16, 2016 - October 15, 2016</span> <b class="caret"></b>
-                            </div>
-                        </div>
-                    </div>
+                <p>Vestibulum porttitor massa eget pellentesque eleifend. Suspendisse tempor, nisi eu placerat auctor,
+                    est erat tempus neque, pellentesque venenatis eros lorem vel quam. Nulla luctus malesuada porttitor.
+                    Fusce risus mi, luctus scelerisque hendrerit feugiat, volutpat gravida nisi. Quisque facilisis risus
+                    in lacus sagittis malesuada. Suspendisse non purus diam. Nunc commodo felis sit amet tortor
+                    adipiscing varius. Fusce commodo nulla quis fermentum hendrerit. Donec vulputate, tellus sed
+                    venenatis sodales, purus nibh ullamcorper quam, sit amet tristique justo velit molestie lorem.</p>
 
-                    <div class="col-md-9 col-sm-9 col-xs-12">
-                        <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
-                        <div style="width: 100%;">
-                            <div id="canvas_dahs" class="demo-placeholder" style="width: 100%; height: 270px; padding: 0px; position: relative;"><canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 794px; height: 270px;" width="794" height="270"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 99px; top: 254px; left: 13px; text-align: center;">Jan 01</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 99px; top: 254px; left: 139px; text-align: center;">Jan 02</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 99px; top: 254px; left: 264px; text-align: center;">Jan 03</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 99px; top: 254px; left: 390px; text-align: center;">Jan 04</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 99px; top: 254px; left: 515px; text-align: center;">Jan 05</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 99px; top: 254px; left: 641px; text-align: center;">Jan 06</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 242px; left: 13px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 223px; left: 7px; text-align: right;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 204px; left: 7px; text-align: right;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 186px; left: 7px; text-align: right;">30</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 167px; left: 7px; text-align: right;">40</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 149px; left: 7px; text-align: right;">50</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 130px; left: 7px; text-align: right;">60</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 112px; left: 7px; text-align: right;">70</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 93px; left: 7px; text-align: right;">80</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 75px; left: 7px; text-align: right;">90</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 56px; left: 1px; text-align: right;">100</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 38px; left: 2px; text-align: right;">110</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 19px; left: 1px; text-align: right;">120</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 1px; left: 1px; text-align: right;">130</div></div></div><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 794px; height: 270px;" width="794" height="270"></canvas></div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                        <div class="x_title">
-                            <h2>Top Campaign Performance</h2>
-                            <div class="clearfix"></div>
-                        </div>
+                <p>Fusce sollicitudin lacus lacinia mi tincidunt ullamcorper. Aenean velit ipsum, vestibulum nec
+                    tincidunt eu, lobortis vitae erat. Nullam ultricies fringilla ultricies. Sed euismod nibh quis
+                    tincidunt dapibus. Nulla quam velit, porta sit amet felis eu, auctor fringilla elit. Donec
+                    convallis tincidunt nibh, quis pellentesque sapien condimentum a. Phasellus purus dui, rhoncus
+                    id suscipit id, ornare et sem. Duis aliquet posuere arcu a ornare. Pellentesque consequat libero
+                    id massa accumsan volutpat. Fusce a hendrerit lacus. Nam elementum ac eros eu porttitor.
+                    Phasellus enim mi, auctor sit amet luctus a, commodo fermentum arcu. In volutpat scelerisque
+                    quam, nec lacinia libero.</p>
 
-                        <div class="col-md-12 col-sm-12 col-xs-6">
-                            <div>
-                                <p>Facebook Campaign</p>
-                                <div class="">
-                                    <div class="progress progress_sm" style="width: 76%;">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80" style="width: 80%;" aria-valuenow="79"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <p>Twitter Campaign</p>
-                                <div class="">
-                                    <div class="progress progress_sm" style="width: 76%;">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60" style="width: 60%;" aria-valuenow="59"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-sm-12 col-xs-6">
-                            <div>
-                                <p>Conventional Media</p>
-                                <div class="">
-                                    <div class="progress progress_sm" style="width: 76%;">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40" style="width: 40%;" aria-valuenow="39"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <p>Bill boards</p>
-                                <div class="">
-                                    <div class="progress progress_sm" style="width: 76%;">
-                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50" style="width: 50%;" aria-valuenow="49"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <p>Aliquam a lacinia orci, iaculis porttitor neque. Nullam cursus dolor tempus mauris posuere, eu
+                    scelerisque sem tincidunt. Praesent blandit sapien at sem pulvinar, vel egestas orci varius.
+                    Praesent vitae purus at ante aliquet luctus vel quis nibh. Mauris id nulla vitae est lacinia
+                    rhoncus a vel justo. Donec iaculis quis sapien vel molestie. Aliquam sed elementum orci.
+                    Vestibulum tristique tempor risus et malesuada. Sed eget ligula sed quam placerat dapibus.
+                    Integer accumsan ac massa at tempus.</p>
 
-                    </div>
+            </div><!-- /.col-xs-12 main -->
 
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- /page content -->
-    </div>
-</div>
 <% include footer %>

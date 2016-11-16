@@ -1,82 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Info windows</title>
-
-    <link href="css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="css/jquery-ui.min.css" rel="stylesheet">
-    <link href="css/bootstrap-clockpicker.min.css" rel="stylesheet">
-    <link href="css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link href="css/daterangepicker.css" rel="stylesheet">
-    <link href="css/jquery.timepicker.css" rel="stylesheet">
-    <link href="css/green.css" rel="stylesheet">
-    <link href="css/smart_wizard.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="css/custom.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="js/prettify.min.css" rel="stylesheet">
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sajat.css" type="text/css">
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
-<body class="nav-md">
-<div class="container body">
-    <div class="main_container">
-        <!-- sidebar-->
-        <div class="col-md-3 left_col">
-            <div class="left_col scroll-view">
-                <div class="navbar nav_title" style="border: 0;">
-                    <a href="#" class="site_title"><i class="fa fa-dashboard"></i><span> IoT</span></a>
-                </div>
-
-                <div class="clearfix"></div>
-
-                <!-- menu profile quick info -->
-                <div class="profile">
-                    <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2>Admin</h2>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-                <!-- /menu profile quick info -->
-
-                <br />
-
-                <!-- sidebar menu -->
-                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                    <div class="menu_section">
-                        <h3>&nbsp;</h3>
-                        <ul class="nav side-menu">
-                            <li  <% if(active == 'dashboard' ){%> class="active" <% }%>><a href="\dashboard"><i class="fa fa-dashboard"></i>Dashboard </a></li>
-                            <li  <% if(active == 'graphs' ){%> class="active" <% }%>><a href="#"><i class="fa fa-area-chart"></i>Grafikonok</a></li>
-                            <li <% if(active == 'devices' ){%> class="active" <% }%>><a><i class="fa fa-table"></i> Eszközök <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu" style="display: block;">
-                                    <li><a href="\devices">Eszközök listája</a></li>
-                                    <li><a href="\new_device">Eszköz hozzáadása</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /sidebar menu -->
-            </div>
-        </div>
-        <!-- /sidebar -->
-
-        <!-- top navigation -->
-
-        <div class="top_nav">
-            <div class="nav_menu nav-menu{*-{$auth['active_restaurant']}*}">
-                <nav>
-                    <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                    </div>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+<body>

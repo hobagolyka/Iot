@@ -1,0 +1,43 @@
+<% include header %>
+<% include navbar %>
+<!-- main area -->
+<div class="col-xs-12 col-sm-9">
+    <h1><span class="glyphicon glyphicon-map-marker"></span> Térkép</h1>
+  <div id="map"></div>
+</div>
+<script>
+    var map;
+    function initMap() {
+        var image = 'antenna.png';
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 46.927599, lng: 17.828559},
+            zoom: 10
+        });
+        <% adatok.forEach(function(item){%>
+             var contentString<%= item.ID %> = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h1 id="firstHeading" class="firstHeading"><%= item.NAME %></h1>'+
+                '<div id="bodyContent">'+
+                '<p>Koordináták: <%= item.CORD1 %> <%= item.CORD2 %></p>'+
+                '</div>'+
+                '</div>';
+
+            var infowindow<%= item.ID %> = new google.maps.InfoWindow({
+                content: contentString<%= item.ID %>
+            });
+            var marker<%= item.ID %> = new google.maps.Marker({
+                position: {lat: <%= item.CORD1 %>, lng: <%= item.CORD2 %>},
+                map: map,
+                icon: image,
+                title: '<%= item.NAME %>'
+            });
+            marker<%= item.ID %>.addListener('click', function() {
+                infowindow<%= item.ID %>.open(map, marker<%= item.ID %>);
+            });
+        <% });%>
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpr5RB7UfG5i3qHJGRimywcjPqqMHSiSA&callback=initMap"
+        async defer></script>
+<% include footer %>

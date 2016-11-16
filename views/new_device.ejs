@@ -1,48 +1,11 @@
 <% include header %>
-<div class="right_col">
-    <div class="x_panel">
-        <div class="x_title">
-            <h2>Új eszköz hozzáadása</h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-        <div class="x_content">
-            <form method="POST">
-                <div class="form-group">
-                    <label for="device_name">Eszköz neve</label>
-                    <input type="text" class="form-control" id="device_name" placeholder="Eszköz neve" name="title" value="">
-                </div>
-                <div class="form-group">
-                    <label for="coord_n">Koordináta: Északi szélesség</label>
-                    <input type="text" class="form-control" id="coord_n" placeholder="N" name="title" value="">
-                </div>
-                <div class="form-group">
-                    <label for="coord_e">Koordináta: Keleti hosszúság</label>
-                    <input type="text" class="form-control" id="coord_e" placeholder="E" name="title" value="">
-                </div>
-                <div class="form-group">
-                    <label for="ip_add">IP cím</label>
-                    <input type="text" class="form-control" id="ip_add" placeholder="IP" name="title" value="">
-                </div>
-                <div class="form-group">
-                    <label for="description">Megjegyzés</label>
-                    <textarea class="form-control" id="description"
-                              name="description">Megjegyzés.</textarea>
-                </div>
+<% include navbar %>
+<!-- main area -->
+<div class="col-xs-12 col-sm-9">
+    <h1><span class="glyphicon glyphicon-plus"></span> Eszköz hozzáadása</h1>
 
-                <input type="submit" class="btn btn-primary" value="Hozzáadás"/>
 
-                <input type="submit" class="btn btn-primary" value="Mentés"/>
+</div><!-- /.col-xs-12 main -->
 
-                <a href="/tasks" class="btn btn-default">Cancel</a>
-            </form>
-        </div>
-    </div>
-
-</div>
-<!-- /page content -->
-</div>
-</div>
 <% include footer %>
+
