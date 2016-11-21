@@ -6,7 +6,12 @@
 body {
     overflow-x: hidden;
 }
-
+.kereses{
+    width: 80px;
+    border-radius: 5px;
+    background-color: #3f3f3f;
+    color: white;
+}
 .header{
     font-size: 25px;
 }
