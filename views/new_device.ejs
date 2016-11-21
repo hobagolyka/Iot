@@ -1,11 +1,86 @@
-<% include header %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/sajat.css" type="text/css">
+    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body onload="initialize()">
 <% include navbar %>
 <!-- main area -->
 <div class="col-xs-12 col-sm-9">
     <h1><span class="glyphicon glyphicon-plus"></span> Eszköz hozzáadása</h1>
-
+        <form class="col-md-8" method="post" action="\add_device">
+            <div class="form-group">
+                <label for="name">Név:</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="ip">IP cím:</label>
+                <input type="text" class="form-control" id="ip" name="ip">
+            </div>
+            <div class="form-group">
+                <label for="comment">Megjegyzés:</label>
+                <textarea class="form-control" rows="2" id="comment" name="comment"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="address">Cím:</label>
+                <input type="text" class="form-control" id="address" name="address" value=""><br>
+                <input type="button" class="btn btn-default" value="Encode" onclick="codeAddress()">
+            </div>
+                <div class="form-group col-md-4">
+                    <label for="display_lat">Szélesség</label>
+                    <input type="text" class="form-control" id="display_lat" name="lat" value="">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="display_lng">Hosszúság</label>
+                    <input type="text" class="form-control" id="display_lng" name="lng" value="">
+                </div>
+            <div id="map" value=""></div><br>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default" value="Mentés"><br>
+            </div>
+        </form>
 
 </div><!-- /.col-xs-12 main -->
+<script>
+    var geocoder;
+    var map;
 
+    function initialize() {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(46.927599, 17.828559);
+        var mapOptions = {
+            zoom: 12,
+            center: latlng
+        }
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    }
+
+    function codeAddress() {
+        var address = document.getElementById('address').value;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            if (status == 'OK') {
+                document.getElementById('display_lat').value = results[0].geometry.location.lat();
+                document.getElementById('display_lng').value = results[0].geometry.location.lng();
+
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpr5RB7UfG5i3qHJGRimywcjPqqMHSiSA&callback=initialize"></script>
 <% include footer %>
 

@@ -1,3 +1,10 @@
-/**
- * Created by Judit on 2016. 11. 17..
- */
+module.exports = function () {
+
+    return function (req, res, next) {
+        if (typeof req.session.userid !== 'undefined') {
+            return res.redirect('/');
+        }
+        return next();
+    };
+
+};

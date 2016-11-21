@@ -5,25 +5,50 @@
     <h1><span class="glyphicon glyphicon-hdd"></span> Eszközök</h1>
     <table class="table">
         <thead>
-        <th>ID</th>
         <th>NAME</th>
-        <th>CORD1</th>
-        <th>CORD2</th>
+        <th>ADDRESS</th>
+        <th>IP</th>
+        <th>&nbsp;</th>
         </thead>
         <tbody>
 
         <% adatok.forEach(function(item){%>
         <tr>
-            <td><%= item.ID %></td>
             <td><%= item.NAME %></td>
-            <td><%= item.CORD1 %></td>
-            <td><%= item.CORD2 %></td>
+            <td><%= item.ADDRESS %></td>
+            <td><%= item.IP %></td>
+            <td align="right"><button data-toggle="modal" data-target="#myModal<%= item.ID %>"class="btn btn-default detailbtn">Részletek </button> <a href="\delete\<%= item.ID %>" class="btn btn-danger detailbtn megerosites">Törlés</a></td>
         </tr>
+
+        <!-- Modal -->
+        <div id="myModal<%= item.ID %>" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"><%= item.NAME %></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Koordináták: <%= item.CORD1 %> <%= item.CORD2 %><br>
+                           Cím: <%= item.ADDRESS %><br>
+                           Időpont: <%= moment.moment(item.TS).format('YYYY-MM-DD HH:mm:ss'); %><br>
+                           IP cím: <%= item.IP %><br>
+                            Megjegyzés: <%= item.DATA %>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         <% }); %>
         </tbody>
     </table>
-
+    <% include areyousure %>
 </div><!-- /.col-xs-12 main -->
-
 <% include footer %>
 

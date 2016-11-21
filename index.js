@@ -3,6 +3,7 @@ var app = express();
 var snmp = require ("net-snmp");
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var moment = require('moment');
 
 /**
  * Static stuff
@@ -17,7 +18,7 @@ app.set('view engine', 'ejs');
 app.use(session({
     secret: 'keyboard cat',
     cookie: {
-        maxAge: 60000
+        maxAge: 1001000
     },
     resave: true,
     saveUninitialized: false
@@ -39,6 +40,7 @@ app.use(bodyParser.urlencoded({
 app.use(function (req, res, next) {
     res.tpl = {};
     res.tpl.error = [];
+    res.tpl.moment = { moment: moment };
 
     return next();
 });
@@ -47,7 +49,8 @@ app.use(function (req, res, next) {
  * Include all the routes
  */
 require('./routes/outside')(app);
-//require('./routes/dashboard')(app);
+require('./routes/dashboard')(app);
+require('./routes/devices')(app);
 
 /**
  * Standard error handler
