@@ -6,7 +6,7 @@ var logoutMW = require('../middleware/generic/logout');
 
 module.exports = function(app) {
    app.get('/',
-       redirectMW('/dashboard')
+       redirectMW('/devices')
    );
 
    app.use('/login',

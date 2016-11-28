@@ -1,0 +1,37 @@
+<% include header %>
+<script>
+     var socket = io();
+
+     socket.on('timer', function (data) {
+     //$('#clock').html(data.countdown);
+     });
+
+     socket.on('news', function (data) {
+         console.log(data);
+         if(data.value !== '' && (typeof data.value !== 'undefined'))
+        $("#snmptabla").append('<tr><td>' + data.oid + '</td><td>' + data.value + '</td><td>' + data.type + '</td></tr>')
+     });
+</script>
+
+<% include navbar %>
+
+<!-- main area -->
+<div class="col-xs-12 col-sm-9">
+    <h1><span class="glyphicon glyphicon-hdd"></span> <%= adatok.IP %> snmpwalk</h1>
+    <table>
+        <thead>
+        <th>OID</th>
+        <th>Value</th>
+        <th>Type</th>
+        </thead>
+        <tbody id="snmptabla">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+   </div><!-- /.col-xs-12 main -->
+<% include footer %>
+

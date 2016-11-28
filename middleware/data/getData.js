@@ -12,10 +12,11 @@ function dbconnect(callback) {
     });
 }
 
-module.exports = function () {
+module.exports = function (){
+
 
     return function (req, res, next) {
-
+       
         dbconnect(function(err, results){
             if (err) throw err;
             else {

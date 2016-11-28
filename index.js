@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 var snmp = require ("net-snmp");
 var session = require('express-session');
 var bodyParser = require('body-parser');
@@ -41,7 +44,7 @@ app.use(function (req, res, next) {
     res.tpl = {};
     res.tpl.error = [];
     res.tpl.moment = { moment: moment };
-
+    res.tpl.socket = io;
     return next();
 });
 
@@ -62,6 +65,6 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
 });
 
-var server = app.listen(3000, function () {
-    console.log('Hello :3000');
+http.listen(3000, function(){
+    console.log('listening on *:3000');
 });

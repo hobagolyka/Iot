@@ -5,16 +5,7 @@ var authMW = require('../middleware/generic/auth');
 var searchMW = require('../middleware/data/search');
 
 module.exports = function (app) {
-
-    /**
-     * Main page
-     */
-    app.use('/dashboard',
-        authMW(),
-        getdataMW(),
-        renderMW('dashboard', 'Dashboard')
-    );
-
+    
     /**
      * Map
      */

@@ -6,6 +6,7 @@ module.exports = function () {
 
     return function (req, res, next) {
         var insert_data = req.body;
+        console.log(req.body);
         var d = moment();
         var date = new Date(d);
         var newdevice= { TS: date,
@@ -14,7 +15,9 @@ module.exports = function () {
             IP: (typeof insert_data.ip!== 'undefined') ? insert_data.ip : '',
             CORD1: (typeof insert_data.lat !== 'undefined') ? insert_data.lat : '',
             CORD2: (typeof insert_data.lng !== 'undefined') ? insert_data.lng : '',
-            ADDRESS: (typeof insert_data.address !== 'undefined') ? insert_data.address : ''
+            ADDRESS: (typeof insert_data.address !== 'undefined') ? insert_data.address : '',
+            TYPE: (typeof insert_data.type !== 'undefined') ? insert_data.type : '',
+            OIDS: (typeof insert_data.oid !== 'undefined') ? insert_data.oid : ''
         };
 
         connection.query('INSERT INTO devices SET ?', newdevice, function(err,res){

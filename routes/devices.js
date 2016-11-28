@@ -5,6 +5,9 @@ var authMW = require('../middleware/generic/auth');
 var deleteMW = require('../middleware/data/delete');
 var redirectMW = require('../middleware/generic/redirect');
 var addMW = require('../middleware/data/addDevice');
+var getdeviceMW = require('../middleware/data/getDevice');
+var runsnmpMW = require('../middleware/snmp/runSnmp');
+var snmpwalkMW = require('../middleware/snmp/GetData');
 
 module.exports = function (app) {
     /**
@@ -24,14 +27,25 @@ module.exports = function (app) {
         addMW(),
         redirectMW('/devices')
     );
-
+    
+    app.use('/detail/:id/snmpwalk',
+        //authMW(),
+        getdeviceMW(),
+        snmpwalkMW(),
+        renderMW('snmpwalk', 'Device detail')
+    );
+    
     /**
      * Detail
      */
     app.use('/detail/:id',
-        authMW(),
-        renderMW('device_detail', 'Device detail')
+        //authMW(),
+        getdeviceMW(),
+        runsnmpMW(),
+        renderMW('detail', 'Device detail')
     );
+
+
 
     /**
      * Add new device

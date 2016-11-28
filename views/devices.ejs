@@ -3,10 +3,18 @@
 <!-- main area -->
 <div class="col-xs-12 col-sm-9">
     <h1><span class="glyphicon glyphicon-hdd"></span> Eszközök</h1>
+    <form method="post" action="/search" class="col-md-4">
+        <div class="col-md-9">
+        <input type="text" class="form-control " id="search1" placeholder="Keresés név szerint" name="search"><br>
+            </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-search"></span> Keresés</button><br>
+        </div>
+    </form>
     <table class="table">
         <thead>
         <th>NAME</th>
-        <th>ADDRESS</th>
+        <th>TYPE</th>
         <th>IP</th>
         <th>&nbsp;</th>
         </thead>
@@ -15,36 +23,11 @@
         <% adatok.forEach(function(item){%>
         <tr>
             <td><%= item.NAME %></td>
-            <td><%= item.ADDRESS %></td>
+            <td><%= item.TYPE %></td>
             <td><%= item.IP %></td>
-            <td align="right"><button data-toggle="modal" data-target="#myModal<%= item.ID %>"class="btn btn-default detailbtn">Részletek </button> <a href="\delete\<%= item.ID %>" class="btn btn-danger detailbtn megerosites">Törlés</a></td>
+            <td align="right"><a href="detail/<%= item.ID %>" class="btn btn-default detailbtn">Részletek </a> <a href="\delete\<%= item.ID %>" class="btn btn-danger detailbtn megerosites">Törlés</a></td>
         </tr>
 
-        <!-- Modal -->
-        <div id="myModal<%= item.ID %>" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><%= item.NAME %></h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Koordináták: <%= item.CORD1 %> <%= item.CORD2 %><br>
-                           Cím: <%= item.ADDRESS %><br>
-                           Időpont: <%= moment.moment(item.TS).format('YYYY-MM-DD HH:mm:ss'); %><br>
-                           IP cím: <%= item.IP %><br>
-                            Megjegyzés: <%= item.DATA %>
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
         <% }); %>
         </tbody>
     </table>
