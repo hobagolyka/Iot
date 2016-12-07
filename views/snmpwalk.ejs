@@ -1,50 +1,26 @@
 <% include header %>
-<script>
-     var socket = io();
-
-     socket.on('timer', function (data) {
-     //$('#clock').html(data.countdown);
-     });
-
-     socket.on('news', function (data) {
-         console.log(data);
-         if(data.value !== '' && (typeof data.value !== 'undefined'))
-        $("#snmptabla").append('<tr><td>' + data.oid + '</td><td>' + data.value + '</td><td>' + data.type + '</td></tr>')
-     });
-</script>
 
 <% include navbar %>
 
 <!-- main area -->
 <div class="col-xs-12 col-sm-9">
-    <h1><span class="glyphicon glyphicon-hdd"></span> <%= adatok.IP %> snmpwalk</h1>
-    <table>
+    <h1><span class="glyphicon glyphicon-hdd"></span> <%= adatok.IP %> Interfészei</h1>
+    <table class="table table-striped">
         <thead>
-        <th>1</th>
-        <th>2</th>
+            <th>Index</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Speed</th>
         </thead>
-        <tbody id="snmptabla">
-        <%= t %>
-    <% var table = JSON.parse(t);
-        var indexes = [];
-        for (index in table)
-            indexes.push (parseInt (index));
-        indexes.sort (sorti);
-
-        for (var i = 0; i < indexes.length; i++) {
-            var columns = [];
-            for (column in table[indexes[i]])
-                columns.push (parseInt (column));
-            columns.sort (sorti);
-            %>
-            <tr>
-        <%
-            for (var j = 0; j < 5; j++) { %>
-                <td> <% (table[indexes[i]][columns[j]]).forEach(function (item){ %>
-                    <%= item %>
-                    <% }); %></td>
+        <tbody>
+        <% tablazat.forEach(function(item){%>
+        <tr>
+            <td><%=item['0']%></td>
+            <td><%=item['1']%></td>
+            <td><%=item['2']%></td>
+            <td><%=item['3']%></td>
         </tr>
-        <% }} %>
+        <%});%>
         </tbody>
     </table>
    </div><!-- /.col-xs-12 main -->

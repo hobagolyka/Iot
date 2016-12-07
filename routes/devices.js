@@ -8,6 +8,9 @@ var addMW = require('../middleware/data/addDevice');
 var getdeviceMW = require('../middleware/data/getDevice');
 var runsnmpMW = require('../middleware/snmp/runSnmp');
 var snmpwalkMW = require('../middleware/snmp/GetData');
+var pingMW = require('../middleware/discovery/fping');
+var pingallMW = require('../middleware/discovery/pingaround');
+var nsMW = require('../middleware/discovery/ns');
 
 module.exports = function (app) {
     /**
@@ -16,6 +19,7 @@ module.exports = function (app) {
     app.use('/devices',
         authMW(),
         getdbdataMW(),
+       // pingallMW(),
         renderMW('devices', 'Devices')
     );
 
@@ -39,13 +43,13 @@ module.exports = function (app) {
      * Detail
      */
     app.use('/detail/:id',
-        //authMW(),
+        authMW(),
         getdeviceMW(),
         runsnmpMW(),
+        pingMW(),
+        //nsMW(),
         renderMW('detail', 'Device detail')
     );
-
-
 
     /**
      * Add new device

@@ -1,10 +1,21 @@
 <% include header %>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io('/<%- adatok.ID %>');
+    socket.on('hi',function(data){
+        $('#timeticks').html(data);
+    });
 
+</script>
 <% include navbar %>
 
 <!-- main area -->
 <div class="col-xs-12 col-sm-9">
-    <h1><span class="glyphicon glyphicon-hdd"></span> <%= adatok.NAME %> eszköz adatai</h1>
+    <h1>
+        <% if(alive == 1){%><span class="glyphicon glyphicon-hdd" style="color: green;"></span><%}%>
+        <% if(alive == 0){ %><span class="glyphicon glyphicon-hdd" style="color: red;"></span><%}%>
+        <%= adatok.NAME %> eszköz adatai
+    </h1>
     <div class="info_box">
        <table>
            <tbody id="data_section">
@@ -38,32 +49,34 @@
            </tr>
            <tr>
                <td>Device name</td>
-               <td><div id="device_name"><%= (typeof snmp[0].value !== 'undefined') ? snmp[0].value : '' %></div></td>
+               <td><div id="device_name">
+                       <%= (typeof snmp !== 'undefined') ? snmp[0].value : '' %>
+                   </div></td>
            </tr>
            <tr>
                <td>Enterprise OID</td>
-               <td><div id="en_oid"><%= (typeof snmp[1].value !== 'undefined') ? snmp[1].value : '' %></div></td>
+               <td><div id="en_oid"><%= (typeof snmp !== 'undefined') ? snmp[1].value : '' %></div></td>
            </tr>
            <tr>
-               <td>Timeticks in days</td>
-               <td><div id="timeticks"><%= (typeof snmp[2].value !== 'undefined') ? Math.round(snmp[2].value/8640000) : '' %></div></td>
+               <td>Timeticks</td>
+               <td><div id="timeticks"><%= (typeof snmp !== 'undefined') ? snmp[2].value : '' %></div></td>
            </tr>
            <tr>
                <td>Contact</td>
-               <td><div id="contact"><%= (typeof snmp[3].value !== 'undefined') ? snmp[3].value : '' %></div></td>
+               <td><div id="contact"><%= (typeof snmp !== 'undefined') ? snmp[3].value : '' %></div></td>
            </tr>
            <tr>
                <td>System name</td>
-               <td><div id="sys_name"><%= (typeof snmp[4].value !== 'undefined') ? snmp[4].value : '' %></div></td>
+               <td><div id="sys_name"><%= (typeof snmp !== 'undefined') ? snmp[4].value : '' %></div></td>
            </tr>
            <tr>
                <td>Location</td>
-               <td><div id="location"><%= (typeof snmp[5].value !== 'undefined') ? snmp[5].value : '' %></div></td>
+               <td><div id="location"><%= (typeof snmp !== 'undefined') ? snmp[5].value : '' %></div></td>
            </tr>
            </tbody>
        </table>
     </div>
-    <a href="/detail/<%= adatok.ID %>/snmpwalk" class="btn btn-default">Run Snmpwalk</a><a href="/devices" class="btn btn-default">vissza</a>
+    <a href="/detail/<%= adatok.ID %>/oid" class="btn btn-default">OID beállítás</a> <% if(alive == 1){ %><a href="/detail/<%= adatok.ID %>/snmpwalk" class="btn btn-default">OID futtatás</a><%}%><a href="/devices" class="btn btn-default">vissza</a>
 </div><!-- /.col-xs-12 main -->
 <% include footer %>
 

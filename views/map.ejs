@@ -26,6 +26,7 @@
             var infowindow<%= item.ID %> = new google.maps.InfoWindow({
                 content: contentString<%= item.ID %>
             });
+            <% if(item.CORD1 !== '' && item.CORD2 !== ''){%>
             var marker<%= item.ID %> = new google.maps.Marker({
                 position: {lat: <%= item.CORD1 %>, lng: <%= item.CORD2 %>},
                 map: map,
@@ -35,6 +36,7 @@
             marker<%= item.ID %>.addListener('click', function() {
                 infowindow<%= item.ID %>.open(map, marker<%= item.ID %>);
             });
+            <%}%>
         <% });%>
     }
 </script>

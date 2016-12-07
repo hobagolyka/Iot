@@ -21,6 +21,13 @@ module.exports = function (){
             if (err) throw err;
             else {
                 res.tpl.adatok = results;
+                
+                var tomb = [];
+                results.forEach(function(item){
+                   tomb.push(item.IP); 
+                });
+                
+                res.tpl.hosts = tomb;
             }
             return next();
         });

@@ -6,9 +6,7 @@ module.exports = function () {
     return function (req, res, next) {
         var IP = res.tpl.adatok.IP;
         var io = res.tpl.socket;
-
-        //setInterval(function() {
-
+        
             var session = snmp.createSession(IP, "public");
 
             var basic_oids = [
@@ -30,13 +28,8 @@ module.exports = function () {
                             console.error(snmp.varbindError(varbinds[i]));
                         else {
                             console.log(varbinds[i].oid + " = " + varbinds[i].value);
-                            /*
-                            io.sockets.emit('timer', { oid: varbinds[i].oid,
-                                value: varbinds[i].value,
-                                id: IP
-                            });*/
+                            }
                         }
-                }
                 return next();
             });
 
@@ -44,7 +37,7 @@ module.exports = function () {
                 if (error)
                     console.error(error);
             });
-        //}, 1000);
+
 
     };
 };

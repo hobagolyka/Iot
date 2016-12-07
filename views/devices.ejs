@@ -1,4 +1,14 @@
 <% include header %>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+     var socket = io();
+     socket.on('broadcast',function(data){
+
+             $('.clock').html(data.o);
+
+     });
+
+</script>
 <% include navbar %>
 <!-- main area -->
 <div class="col-xs-12 col-sm-9">
@@ -17,6 +27,7 @@
         <th>TYPE</th>
         <th>IP</th>
         <th>&nbsp;</th>
+        <th>&nbsp;</th>
         </thead>
         <tbody>
 
@@ -25,6 +36,7 @@
             <td><%= item.NAME %></td>
             <td><%= item.TYPE %></td>
             <td><%= item.IP %></td>
+            <td><div class="clock"></div></td>
             <td align="right"><a href="detail/<%= item.ID %>" class="btn btn-default detailbtn">Részletek </a> <a href="\delete\<%= item.ID %>" class="btn btn-danger detailbtn megerosites">Törlés</a></td>
         </tr>
 

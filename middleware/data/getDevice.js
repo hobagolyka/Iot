@@ -20,6 +20,7 @@ module.exports = function () {
             if (err) throw err;
             else {
                 res.tpl.adatok = result[0];
+                res.tpl.host = result[0].IP;
             }
             return next();
         });
