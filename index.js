@@ -65,6 +65,6 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
 });
 
-http.listen(3000, function(){
+http.listen(80, function(){
     console.log('listening on *:3000');
 });
