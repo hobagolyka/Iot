@@ -20,16 +20,31 @@
     <h1><span class="glyphicon glyphicon-hdd"></span> <%= adatok.IP %> snmpwalk</h1>
     <table>
         <thead>
-        <th>OID</th>
-        <th>Value</th>
-        <th>Type</th>
+        <th>1</th>
+        <th>2</th>
         </thead>
         <tbody id="snmptabla">
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+        <%= t %>
+    <% var table = JSON.parse(t);
+        var indexes = [];
+        for (index in table)
+            indexes.push (parseInt (index));
+        indexes.sort (sorti);
+
+        for (var i = 0; i < indexes.length; i++) {
+            var columns = [];
+            for (column in table[indexes[i]])
+                columns.push (parseInt (column));
+            columns.sort (sorti);
+            %>
+            <tr>
+        <%
+            for (var j = 0; j < 5; j++) { %>
+                <td> <% (table[indexes[i]][columns[j]]).forEach(function (item){ %>
+                    <%= item %>
+                    <% }); %></td>
         </tr>
+        <% }} %>
         </tbody>
     </table>
    </div><!-- /.col-xs-12 main -->
