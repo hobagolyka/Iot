@@ -11,12 +11,13 @@ var snmpwalkMW = require('../middleware/snmp/GetData');
 var pingMW = require('../middleware/discovery/fping');
 var pingallMW = require('../middleware/discovery/pingaround');
 var nsMW = require('../middleware/discovery/ns');
+var handle_csvMW = require('../middleware/devices/handle_csv');
 
 module.exports = function (app) {
     /**
      * Devices
      */
-    app.use('/devices',
+    app.use('/devices/:page',
         authMW(),
         getdbdataMW(),
        // pingallMW(),
@@ -57,6 +58,17 @@ module.exports = function (app) {
     app.use('/new_device',
         authMW(),
         renderMW('new_device', 'Add new deivce')
+    );
+
+    app.use('/csv_upload',
+        authMW(),
+        renderMW('csvupload', 'Add new deivce')
+    );
+
+    app.use('/csv_data',
+        authMW(),
+        handle_csvMW(),
+        redirectMW('/devices')
     );
     
     /**

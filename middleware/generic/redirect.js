@@ -7,8 +7,8 @@
 module.exports = function (where) {
 
     return function (req, res, next) {
-        
 
+        var page = '1';
         if(req.param('page') !== undefined){
             var page = req.param('page');
         }
@@ -16,7 +16,7 @@ module.exports = function (where) {
         if (typeof req.session.userid === 'undefined') {
             return res.redirect('/login');
         } else {
-            return res.redirect(where);
+            return res.redirect(where + '/' + page);
         }
     };
 

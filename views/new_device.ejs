@@ -19,11 +19,11 @@
         <form class="col-md-8" method="post" action="\add_device">
             <div class="form-group">
                 <label for="name">Név:</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" data-validation-help="Eszköz neve, vagy ami szerint azonosítani lehet.">
             </div>
             <div class="form-group">
                 <label for="ip">IP cím:</label>
-                <input type="text" class="form-control" id="ip" name="ip">
+                <input type="text" class="form-control" id="ip" name="ip" data-validation-optional="true" data-validation-help="Eszköz IP címe. A megfelelő formátum: 0-255.0-255.0-255.0-255" data-validation="custom"  data-validation-regexp="^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$">
             </div>
             <div class="form-group">
                 <label for="sel1">Típus</label>
@@ -36,15 +36,15 @@
             </div>
             <div class="form-group">
                 <label for="oid">OID:</label>
-                <input type="text" class="form-control" id="oid" name="oid">
+                <input type="text" class="form-control" id="oid" name="oid" data-validation-help="SNMP-hez használható MIB azonosítók, amik egyes adatokat kérdeznek le. Default: alap adatok (sysName, TimeTicks, Location, Owner). Az OID-ket vesszővel elválasztva add meg.">
             </div>
             <div class="form-group">
                 <label for="comment">Megjegyzés:</label>
-                <textarea class="form-control" rows="2" id="comment" name="comment"></textarea>
+                <textarea class="form-control" rows="2" id="comment" name="comment" data-validation-help="Bármi plusz információ. "></textarea>
             </div>
             <div class="form-group">
                 <label for="address">Cím:</label>
-                <input type="text" class="form-control" id="address" name="address" value=""><br>
+                <input type="text" class="form-control" id="address" name="address" data-validation-help="A cím ahol megtalálható az eszköz."><br>
                 <input type="button" class="btn btn-default" value="Encode" onclick="codeAddress()">
             </div>
                 <div class="form-group col-md-4">
@@ -62,7 +62,11 @@
         </form>
 
 </div><!-- /.col-xs-12 main -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script>
+    $.validate();
+
     var geocoder;
     var map;
 

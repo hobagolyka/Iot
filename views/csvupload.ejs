@@ -1,0 +1,80 @@
+<% include header %>
+<% include navbar %>
+
+<div id="dvImportSegments" class="fileupload ">
+    <fieldset>
+        <legend>CSV fájl feltöltése</legend>
+        <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
+    </fieldset>
+</div>
+<div>
+    <form id="fields" method="post" action="\csv_data">
+        <input type="text" name="data" value="" id="csvdata" class="hidden">
+    </form>
+</div>
+<script src="papaparse.js"></script>
+<script>
+    $(document).ready(function() {
+
+        // The event listener for the file upload
+        document.getElementById('txtFileUpload').addEventListener('change', upload, false);
+
+        // Method that checks that the browser supports the HTML5 File API
+        function browserSupportFileUpload() {
+            var isCompatible = false;
+            if (window.File && window.FileReader && window.FileList && window.Blob) {
+                isCompatible = true;
+            }
+            return isCompatible;
+        }
+
+        // Method that reads and processes the selected file
+        function upload(evt) {
+            if (!browserSupportFileUpload()) {
+                alert('The File APIs are not fully supported in this browser!');
+            } else {
+                var data = null;
+                var file = evt.target.files[0];
+                var reader = new FileReader();
+                reader.readAsText(file);
+                reader.onload = function(event) {
+                    var csvData = event.target.result;
+
+                    var d = csvData.split('\n');
+                    var i = d.length;
+                    while(i--)
+                    {
+                        if(d[i] !== "")
+                        {
+                            d[i] = d[i].split(',');
+                        }
+                        else
+                            d.splice(i,1);
+                    }
+
+                    $("#fields").append("Válassz mezőket amiket szeretnél az adatbázisba tárolni.<br>Default: name, addresses, mac, type.<br>");
+                    var i = 0;
+                    d[0].forEach(function(item){
+                        $("#fields").append("<label class=\"checkbox-inline\"><input type=\"checkbox\" value=\"" + item.toLowerCase() + "\" name=\"" + i + "\">"+ item.toLowerCase() +"</label>");
+                        i++;
+                    });
+                    $("#fields").append("<br><input type=\"submit\" class=\"btn btn-primary\">");
+
+                    var json_data = JSON.stringify(csvData);
+
+                    $("#csvdata").val(json_data);
+
+                    if (data && data.length > 0) {
+                        alert('Imported -' + data.length + '- rows successfully!');
+                    } else {
+                    }
+                };
+                reader.onerror = function() {
+                    alert('Unable to read ' + file.fileName);
+                };
+            }
+        }
+    });
+</script>
+<script src="papaparse.js"></script>
+<% include footer %>

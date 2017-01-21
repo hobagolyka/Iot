@@ -16,7 +16,9 @@ module.exports = function (){
 
 
     return function (req, res, next) {
-       
+
+        res.tpl.page = req.param('page');
+
         dbconnect(function(err, results){
             if (err) throw err;
             else {
