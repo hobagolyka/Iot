@@ -14,19 +14,14 @@ var nsMW = require('../middleware/discovery/ns');
 var handle_csvMW = require('../middleware/devices/handle_csv');
 
 module.exports = function (app) {
-    /**
-     * Devices
-     */
+
     app.use('/devices/:page',
         authMW(),
         getdbdataMW(),
-       // pingallMW(),
+        // pingallMW(),
         renderMW('devices', 'Devices')
     );
 
-    /**
-     * Add device to database
-     */
     app.use('/add_device',
         authMW(),
         addMW(),
@@ -39,10 +34,7 @@ module.exports = function (app) {
         snmpwalkMW(),
         renderMW('snmpwalk', 'Device detail')
     );
-    
-    /**
-     * Detail
-     */
+
     app.use('/detail/:id',
         authMW(),
         getdeviceMW(),
@@ -52,9 +44,11 @@ module.exports = function (app) {
         renderMW('detail', 'Device detail')
     );
 
-    /**
-     * Add new device
-     */
+    app.use('/edit/:id',
+        authMW(),
+        redirectMW('/devices')
+    );
+
     app.use('/new_device',
         authMW(),
         renderMW('new_device', 'Add new deivce')
@@ -70,13 +64,11 @@ module.exports = function (app) {
         handle_csvMW(),
         redirectMW('/devices')
     );
-    
-    /**
-     * Delete device
-     */
+
     app.use('/delete/:id',
         authMW(),
         deleteMW(),
         redirectMW('/devices')
     );
+
 };
