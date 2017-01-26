@@ -12,6 +12,8 @@ var pingMW = require('../middleware/discovery/fping');
 var pingallMW = require('../middleware/discovery/pingaround');
 var nsMW = require('../middleware/discovery/ns');
 var handle_csvMW = require('../middleware/devices/handle_csv');
+var editMW = require('../middleware/devices/edit');
+var updateMW = require('../middleware/data/update');
 
 module.exports = function (app) {
 
@@ -27,6 +29,12 @@ module.exports = function (app) {
         addMW(),
         redirectMW('/devices')
     );
+
+    app.use('/save_changes/:id',
+        authMW(),
+        updateMW(),
+        redirectMW('/devices')
+    );
     
     app.use('/detail/:id/snmpwalk',
         //authMW(),
@@ -38,15 +46,16 @@ module.exports = function (app) {
     app.use('/detail/:id',
         authMW(),
         getdeviceMW(),
-        runsnmpMW(),
-        pingMW(),
+        //runsnmpMW(),
+        //pingMW(),
         //nsMW(),
         renderMW('detail', 'Device detail')
     );
 
     app.use('/edit/:id',
         authMW(),
-        redirectMW('/devices')
+        getdeviceMW(),
+        renderMW('edit', 'Edit device')
     );
 
     app.use('/new_device',

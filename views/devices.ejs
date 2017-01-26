@@ -1,56 +1,52 @@
 <% include header %>
-<script src="/socket.io/socket.io.js"></script>
-<script>
-     var socket = io();
-     socket.on('broadcast',function(data){
+<% include sidebar %>
 
-             $('.clock').html(data.o);
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="side-body">
+            <h1><span class="glyphicon glyphicon-hdd"></span> Eszközök</h1>
+            <form method="post" action="/search" class="col-md-4">
+                <div class="col-md-9">
+                    <input type="text" class="form-control " id="search1" placeholder="Keresés név szerint" name="search"><br>
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-search"></span> Keresés</button><br>
+                </div>
+            </form>
+            <table class="table">
+                <thead>
+                <th>NAME</th>
+                <th>TYPE</th>
+                <th>IP</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+                </thead>
+                <tbody>
+                <!-- lapozó méret beállítása itt: -->
+                <% var lapozo = 30; %>
+                <% for(var i = ((page - 1) * lapozo); i < (page * lapozo) && (i < adatok.length) ; i++) {%>
+                <tr>
+                    <td><%= adatok[i].NAME %></td>
+                    <td><%= adatok[i].TYPE %></td>
+                    <td><%= adatok[i].IP %></td>
+                    <td><div class="clock"></div></td>
+                    <td align="right"><!--<a href="detail/<%= /*adatok[i].ID */%>" class="btn btn-default detailbtn">Részletek </a>-->
+                        <a href="#" class="btn btn-default detailbtn megerosites"><span class="glyphicon glyphicon-signal" aria-hidden="true"></span></a>
+                        <a href="\edit\<%= adatok[i].ID %>" class="btn btn-default detailbtn"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a href="\delete\<%= adatok[i].ID %>" class="btn btn-danger detailbtn megerosites"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                    </td>
 
-     });
+                </tr>
 
-</script>
-<% include navbar %>
-<!-- main area -->
-<div class="col-xs-12 col-sm-9">
-    <h1><span class="glyphicon glyphicon-hdd"></span> Eszközök</h1>
-    <form method="post" action="/search" class="col-md-4">
-        <div class="col-md-9">
-        <input type="text" class="form-control " id="search1" placeholder="Keresés név szerint" name="search"><br>
-            </div>
-        <div class="col-md-3">
-            <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-search"></span> Keresés</button><br>
-        </div>
-    </form>
-    <table class="table">
-        <thead>
-        <th>NAME</th>
-        <th>TYPE</th>
-        <th>IP</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        </thead>
-        <tbody>
-        <!-- lapozó méret beállítása itt: -->
-        <% var lapozo = 30; %>
-        <% for(var i = ((page - 1) * lapozo); i < (page * lapozo) && (i < adatok.length) ; i++) {%>
-        <tr>
-            <td><%= adatok[i].NAME %></td>
-            <td><%= adatok[i].TYPE %></td>
-            <td><%= adatok[i].IP %></td>
-            <td><div class="clock"></div></td>
-            <td align="right"><!--<a href="detail/<%= /*adatok[i].ID */%>" class="btn btn-default detailbtn">Részletek </a>-->
-            <a href="\edit\<%= adatok[i].ID %>" class="btn btn-default detailbtn">Szerkesztés</a>
-            <a href="\delete\<%= adatok[i].ID %>" class="btn btn-danger detailbtn megerosites">Törlés</a></td>
-        </tr>
+                <% } %>
+                </tbody>
+            </table>
+            <ul class="pager">
+                <li><a style="<% if (page == 1) { %> display:none; <% } %>" href="/devices/<%= parseInt(page) - 1 %>"><%= parseInt(page) - 1 %>. oldal</a></li>
+                <li><a style="<% if (Math.ceil(adatok.length / lapozo) == page) { %> display:none; <% } %>" href="/devices/<%= parseInt(page) + 1 %>"><%= parseInt(page) + 1  %>. oldal</a></li>
+            </ul> </div>
 
-        <% } %>
-        </tbody>
-    </table>
-    <ul class="pager">
-        <li><a style="<% if (page == 1) { %> display:none; <% } %>" href="/devices/<%= parseInt(page) - 1 %>"><%= parseInt(page) - 1 %>. oldal</a></li>
-        <li><a style="<% if (Math.ceil(adatok.length / lapozo) == page) { %> display:none; <% } %>" href="/devices/<%= parseInt(page) + 1 %>"><%= parseInt(page) + 1  %>. oldal</a></li>
-    </ul>
-    <% include areyousure %>
-</div><!-- /.col-xs-12 main -->
+    </div>
+</div>
+</div>
 <% include footer %>
-

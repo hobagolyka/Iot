@@ -1,14 +1,15 @@
 <% include header %>
-<% include navbar %>
-<!-- main area -->
-<div class="col-xs-12 col-sm-9">
-    <h1><span class="glyphicon glyphicon-search"></span> Keresés</h1>
+<% include sidebar %>
 
-    <% if((talalatok.length == 0) || (typeof talalatok == 'undefined')) {%>
-    <div class="alert alert-warning">
-        <strong>Figyelem!</strong> Nincs találat.
-    </div>
-    <% } %>
+<!-- Main Content -->
+<div class="container-fluid">
+    <div class="side-body">
+        <h1><span class="glyphicon glyphicon-search"></span> Keresési találatok</h1>
+        <% if((talalatok.length == 0) || (typeof talalatok == 'undefined')) {%>
+        <div class="alert alert-warning">
+            <strong>Figyelem!</strong> Nincs találat.
+        </div>
+        <% } %>
 
         <table class="table">
             <thead>
@@ -55,8 +56,10 @@
             <% }); %>
             </tbody>
 
-    </table>
-</div><!-- /.col-xs-12 main -->
-
+        </table>
+    </div>
+</div>
+</div>
 <% include footer %>
+
 

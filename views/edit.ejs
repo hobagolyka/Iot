@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/sajat.css" type="text/css">
-    <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-</head>
-<body onload="initialize()">
+<% include header %>
 <% include sidebar %>
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="side-body">
-        <h1><span class="glyphicon glyphicon-plus"></span> Eszköz felvétele</h1>
-        <form class="col-md-8" method="post" action="\add_device">
+        <h1><span class="glyphicon glyphicon-edit"></span> <%= adatok.NAME %> szerkesztése</h1>
+        <form class="col-md-8" method="post" action="\save_changes\<%= adatok.ID %>">
             <div class="form-group">
                 <label for="name">Név:</label>
-                <input type="text" class="form-control" id="name" name="name" data-validation-help="Eszköz neve, vagy ami szerint azonosítani lehet.">
+                <input type="text" class="form-control" id="name" name="name" data-validation-help="Eszköz neve, vagy ami szerint azonosítani lehet." value="<%= adatok.NAME %>">
             </div>
             <div class="form-group">
                 <label for="ip">IP cím:</label>
-                <input type="text" class="form-control" id="ip" name="ip" data-validation-optional="true" data-validation-help="Eszköz IP címe. A megfelelő formátum: 0-255.0-255.0-255.0-255" data-validation="custom"  data-validation-regexp="^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$">
+                <input type="text" class="form-control" id="ip" name="ip" data-validation-optional="true" data-validation-help="Eszköz IP címe. A megfelelő formátum: 0-255.0-255.0-255.0-255" data-validation="custom"  data-validation-regexp="^(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){4}$" value="<%= adatok.IP %>">
             </div>
             <div class="form-group">
                 <label for="sel1">Típus</label>
                 <select class="form-control" id="sel1" name ="type">
+                    <option selected><%= adatok.TYPE %></option>
                     <option>Router</option>
                     <option>Switch</option>
                     <option>Wireless</option>
@@ -37,20 +25,20 @@
             </div>
             <div class="form-group">
                 <label for="comment">Megjegyzés:</label>
-                <textarea class="form-control" rows="2" id="comment" name="comment" data-validation-help="Bármi plusz információ. "></textarea>
+                <textarea class="form-control" rows="2" id="comment" name="comment" data-validation-help="Bármi plusz információ. "><%= (typeof adatok.DATA !== 'undefined') ? adatok.DATA : '' %></textarea>
             </div>
             <div class="form-group">
                 <label for="address">Cím:</label>
-                <input type="text" class="form-control" id="address" name="address" data-validation-help="A cím ahol megtalálható az eszköz."><br>
+                <input type="text" class="form-control" id="address" name="address" data-validation-help="A cím ahol megtalálható az eszköz." value="<%= (typeof adatok.ADDRESS !== 'undefined') ? adatok.ADDRESS : '' %>"><br>
                 <input type="button" class="btn btn-default" value="Encode" onclick="codeAddress()">
             </div>
             <div class="form-group col-md-4">
                 <label for="display_lat">Szélesség</label>
-                <input type="text" class="form-control" id="display_lat" name="lat" value="">
+                <input type="text" class="form-control" id="display_lat" name="lat" value="<%= (typeof adatok.CORD1 !== 'undefined') ? adatok.CORD1 : '' %>">
             </div>
             <div class="form-group col-md-4">
                 <label for="display_lng">Hosszúság</label>
-                <input type="text" class="form-control" id="display_lng" name="lng" value="">
+                <input type="text" class="form-control" id="display_lng" name="lng" value="<%= (typeof adatok.CORD2 !== 'undefined') ? adatok.CORD2 : '' %>">
             </div>
             <div id="map" value=""></div><br>
             <div class="form-group">
@@ -60,7 +48,7 @@
     </div>
 </div>
 </div>
-<% include footer %>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script>

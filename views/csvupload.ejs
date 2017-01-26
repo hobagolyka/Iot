@@ -1,17 +1,25 @@
 <% include header %>
-<% include navbar %>
+<% include sidebar %>
 
-<div id="dvImportSegments" class="fileupload ">
-    <fieldset>
-        <legend>CSV fájl feltöltése</legend>
-        <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
-    </fieldset>
+<!-- Main Content -->
+<div class="container-fluid">
+    <div class="side-body">
+        <h1><span class="glyphicon glyphicon-upload"></span> CSV fájl feltöltés</h1>
+        <div id="dvImportSegments" class="fileupload ">
+            <fieldset>
+
+                <input type="file" name="File Upload" id="txtFileUpload" accept=".csv" />
+            </fieldset>
+        </div>
+        <div>
+            <form id="fields" method="post" action="\csv_data">
+                <input type="text" name="data" value="" id="csvdata" class="hidden">
+            </form>
+        </div>
+    </div>
 </div>
-<div>
-    <form id="fields" method="post" action="\csv_data">
-        <input type="text" name="data" value="" id="csvdata" class="hidden">
-    </form>
 </div>
+
 <script src="papaparse.js"></script>
 <script>
     $(document).ready(function() {

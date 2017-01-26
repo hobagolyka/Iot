@@ -6,8 +6,10 @@ module.exports = function () {
 
     return function (req, res, next) {
         var insert_data = req.body;
+        console.log(req.param('id'));
         var d = moment();
         var date = new Date(d);
+
         var newdevice= { TS: date,
             NAME: (typeof insert_data.name !== 'undefined') ? insert_data.name : '',
             DATA: (typeof insert_data.comment !== 'undefined') ? insert_data.comment : '',
@@ -16,16 +18,24 @@ module.exports = function () {
             CORD2: (typeof insert_data.lng !== 'undefined') ? insert_data.lng : '',
             ADDRESS: (typeof insert_data.address !== 'undefined') ? insert_data.address : '',
             TYPE: (typeof insert_data.type !== 'undefined') ? insert_data.type : '',
-            OIDS: (typeof insert_data.oid !== 'undefined') ? insert_data.oid : ''
         };
 
-        connection.query('INSERT INTO devices SET ?', newdevice, function(err,res){
-            if(err) {
-                return connection.rollback(function() {
-                    console.log(err);
-                });
-            }
-        });
-      return next();
+        connection.query('UPDATE devices SET name =\''
+            + newdevice.NAME +'\', IP =\''
+            + newdevice.IP + '\', data =\''
+            + newdevice.DATA + '\', cord1 =\''
+            + newdevice.CORD1 + '\', cord2 =\''
+            + newdevice.CORD2 + '\', address =\''
+            + newdevice.ADDRESS + '\', type =\''
+            + newdevice.TYPE + '\' Where ID ='
+            + req.param('id'),
+            function(err,res){
+                if(err) {
+                    return connection.rollback(function() {
+                        console.log(err);
+                    });
+                }
+            });
+        return next();
     };
 };

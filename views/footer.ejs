@@ -3,11 +3,29 @@
 </div><!--/.page-container-->
 
 <script>
-    $(document).ready(function() {
-        $('[data-toggle=offcanvas]').click(function() {
-            $('.row-offcanvas').toggleClass('active');
+
+    $(function () {
+        $('.navbar-toggle').click(function () {
+            $('.navbar-nav').toggleClass('slide-in');
+            $('.side-body').toggleClass('body-slide-in');
+            $('#search').removeClass('in').addClass('collapse').slideUp(200);
+
+            /// uncomment code for absolute positioning tweek see top comment in css
+            //$('.absolute-wrapper').toggleClass('slide-in');
+
+        });
+
+        // Remove menu for searching
+        $('#search-trigger').click(function () {
+            $('.navbar-nav').removeClass('slide-in');
+            $('.side-body').removeClass('body-slide-in');
+
+            /// uncomment code for absolute positioning tweek see top comment in css
+            //$('.absolute-wrapper').removeClass('slide-in');
+
         });
     });
+
 </script>
 <script src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

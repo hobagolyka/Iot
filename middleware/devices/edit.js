@@ -6,6 +6,7 @@ module.exports = function () {
 
     return function (req, res, next) {
         var insert_data = req.body;
+        console.log(req.body);
         var d = moment();
         var date = new Date(d);
         var newdevice= { TS: date,
@@ -26,6 +27,7 @@ module.exports = function () {
                 });
             }
         });
-      return next();
+        return next();
     };
 };
+
