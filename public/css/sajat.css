@@ -397,3 +397,7 @@
         margin: 0;
     }
 }
+
+.status{
+    color: red;
+}
