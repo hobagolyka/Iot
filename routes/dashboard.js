@@ -26,7 +26,7 @@ module.exports = function (app) {
     /**
      * search
      */
-    app.use('/search',
+    app.use('/search/:page',
         authMW(),
         searchMW(),
         renderMW('search', 'Keresés')

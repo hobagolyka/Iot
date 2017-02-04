@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="address">Cím:</label>
                 <input type="text" class="form-control" id="address" name="address" data-validation-help="A cím ahol megtalálható az eszköz."><br>
-                <input type="button" class="btn btn-default" value="Encode" onclick="codeAddress()">
+                <input type="button" class="btn btn-warning" value="Címből koordináták generálása" onclick="codeAddress()">
             </div>
             <div class="form-group col-md-4">
                 <label for="display_lat">Szélesség</label>
@@ -54,7 +54,7 @@
             </div>
             <div id="map" value=""></div><br>
             <div class="form-group">
-                <input type="submit" class="btn btn-default" value="Mentés"><br>
+                <input type="submit" class="btn btn-primary" value="Mentés"><br>
             </div>
         </form>
     </div>
@@ -68,6 +68,7 @@
 
     var geocoder;
     var map;
+    var image = 'antenna.png';
 
     function initialize() {
         geocoder = new google.maps.Geocoder();
@@ -76,7 +77,28 @@
             zoom: 12,
             center: latlng
         }
+
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        var marker;
+
+        function placeMarker(location) {
+            if ( marker ) {
+                marker.setPosition(location);
+            } else {
+                marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    icon: image
+                });
+            }
+        }
+
+        google.maps.event.addListener(map, 'click', function(event) {
+            placeMarker(event.latLng);
+            document.getElementById('display_lat').value = event.latLng.lat();
+            document.getElementById('display_lng').value = event.latLng.lng();
+        });
     }
 
     function codeAddress() {
@@ -96,6 +118,7 @@
             }
         });
     }
+
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpr5RB7UfG5i3qHJGRimywcjPqqMHSiSA&callback=initialize"></script>
 <% include footer %>

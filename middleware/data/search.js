@@ -5,7 +5,7 @@ function dbconnect(callback, findme) {
 
     /* keresés, escapelve! */
     connection.query(
-        'SELECT * FROM devices WHERE name =' + mysql.escape(findme),
+        'SELECT * FROM devices WHERE name LIKE \"%\"' + mysql.escape(findme) + '\"%\"',
         function(err,rows){
             if (err) {
                 throw err;
@@ -21,6 +21,7 @@ module.exports = function () {
         /* keresett név */
         var findme = String(req.body.search);
         res.tpl.talalatok = {};
+        res.tpl.page = req.param('page');
 
         dbconnect(function(err, results){
             if (err) throw err;

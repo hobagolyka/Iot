@@ -399,5 +399,6 @@
 }
 
 .status{
-    color: red;
+    background-color: #d9534f;
+    color: white;
 }
