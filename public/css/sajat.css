@@ -1,3 +1,7 @@
+body{
+    color: #333333;
+}
+
 #map {
     height: 400px;
     width: 100%;
@@ -399,6 +403,33 @@
 }
 
 .status{
+    color: red;
+}
+
+.status{
     background-color: #d9534f;
     color: white;
+}
+
+.szam{
+    color: color: #333333;
+    font-weight: bold;
+}
+
+.number_all{
+    font-size: 40px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.number_active{
+    font-size: 40px;
+    font-weight: bold;
+    color: #4cae4c;
+}
+
+.number_inactive{
+    font-size: 40px;
+    font-weight: bold;
+    color: #d9534f;
 }

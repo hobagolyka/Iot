@@ -14,13 +14,16 @@ var nsMW = require('../middleware/discovery/ns');
 var handle_csvMW = require('../middleware/devices/handle_csv');
 var editMW = require('../middleware/devices/edit');
 var updateMW = require('../middleware/data/update');
+var activeMW = require('../middleware/data/getActive');
+var inactiveMW = require('../middleware/data/getInactive');
 
 module.exports = function (app) {
 
     app.use('/devices/:page',
         authMW(),
         getdbdataMW(),
-        // pingallMW(),
+        activeMW(),
+        inactiveMW(),
         renderMW('devices', 'Devices')
     );
 

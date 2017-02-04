@@ -3,7 +3,7 @@ var connection = require('../../config/config');
 
 function dbconnect(req, callback) {
 
-    connection.query('SELECT * FROM devices WHERE ID = ?', req.param('id'), function(err,row){
+    connection.query('SELECT * FROM devices WHERE STATUS = true', function(err,row){
         if (err) {
             throw err;
         }
@@ -16,10 +16,10 @@ module.exports = function () {
     return function (req, res, next) {
 
         dbconnect(req, function(err, result){
-         
+
             if (err) throw err;
             else {
-                res.tpl.adatok = result[0];
+                res.tpl.actives = result;
             }
             return next();
         });
