@@ -7,8 +7,8 @@
             <h1><span class="glyphicon glyphicon-hdd"></span> Eszközök</h1>
             <div class="row" align="center">
                 <div class="col-xs-3 col-md-3"><span class="number_all"><%= adatok.length %></span><br><span class="szam">eszköz</span></div>
-                <div class="col-xs-3 col-md-3"><span class="number_active"><%= actives.length %></span><br><span class="szam">aktív</span></div>
-                <div class="col-xs-3 col-md-3"><span class="number_inactive"><%= inactives.length %></span><br><span class="szam">inaktív</span></div>
+                <div class="col-xs-3 col-md-3"><a href="\list_actives"><span class="number_active"><%= actives.length %></span><br><span class="szam">aktív</span></a></div>
+                <div class="col-xs-3 col-md-3"><a href="\list_inactives"><span class="number_inactive"><%= inactives.length %></span><br><span class="szam">inaktív</span></a></div>
                 <form method="post" action="/search/1" class="col-md-3">
                     <input type="text" class="form-control " id="search1" placeholder="Keresés név szerint" name="search"><br>
                 </form>

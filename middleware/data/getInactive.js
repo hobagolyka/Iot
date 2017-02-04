@@ -20,6 +20,7 @@ module.exports = function () {
             if (err) throw err;
             else {
                 res.tpl.inactives = result;
+                res.tpl.page = 1; //req.param('page');
             }
             return next();
         });

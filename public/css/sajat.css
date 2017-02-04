@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
 body{
     color: #333333;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #map {
@@ -412,7 +415,7 @@ body{
 }
 
 .szam{
-    color: color: #333333;
+    color: #333333;
     font-weight: bold;
 }
 

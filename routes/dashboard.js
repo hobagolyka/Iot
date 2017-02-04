@@ -3,6 +3,8 @@ var getdataMW = require('../middleware/snmp/GetData');
 var getdbdataMW = require('../middleware/data/getData');
 var authMW = require('../middleware/generic/auth');
 var searchMW = require('../middleware/data/search');
+var activeMW = require('../middleware/data/getActive');
+var inactiveMW = require('../middleware/data/getInactive');
 
 module.exports = function (app) {
     
@@ -30,5 +32,23 @@ module.exports = function (app) {
         authMW(),
         searchMW(),
         renderMW('search', 'Keresés')
+    );
+
+    /**
+     * active
+     */
+    app.use('/list_actives',
+        authMW(),
+        activeMW(),
+        renderMW('active', 'Aktív')
+    );
+
+    /**
+     * inactive
+     */
+    app.use('/list_inactives',
+        authMW(),
+        inactiveMW(),
+        renderMW('inactive', 'Aktív')
     );
 };
