@@ -5,6 +5,9 @@ var authMW = require('../middleware/generic/auth');
 var searchMW = require('../middleware/data/search');
 var activeMW = require('../middleware/data/getActive');
 var inactiveMW = require('../middleware/data/getInactive');
+var getuserMW = require('../middleware/user/getUser');
+var updateuserMW = require('../middleware/user/updateUser');
+var redirectMW = require('../middleware/generic/redirect');
 
 module.exports = function (app) {
     
@@ -22,7 +25,17 @@ module.exports = function (app) {
      */
     app.use('/admin',
         authMW(),
+        getuserMW(),
         renderMW('admin_page', 'Admin')
+    );
+
+    /**
+     * Admin
+     */
+    app.use('/new_password',
+        authMW(),
+        updateuserMW(),
+        redirectMW('/devices')
     );
 
     /**

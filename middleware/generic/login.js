@@ -27,17 +27,17 @@ module.exports = function () {
         }
 
         dbconnect(req, function(err, result){
-
             if (err) throw err;
             else {
-                console.log(result);
 
                 if(result.length == 0){
                     res.tpl.alert = true;
                     return next();
                 }
                 else{
-                    req.session.userid = 21452;
+
+                    req.session.userid = result[0].ID;
+                    res.tpl.user = result[0];
                     //redirect to / so the app can decide where to go next
                     return res.redirect('/');
                 }

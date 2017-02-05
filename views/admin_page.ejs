@@ -5,7 +5,17 @@
 <div class="container-fluid">
     <div class="side-body">
         <h1><span class="glyphicon glyphicon-user"></span> Felhasználó</h1>
-
+        <form class="col-md-8" method="post" action="/new_password">
+            <div class="form-group">
+                <label for="name">Név:</label>
+                <input type="text" class="form-control" id="name" name="name" readonly value="<%= user.USER %>">
+            </div>
+            <div class="form-group">
+                <label for="ip">Jelszó:</label>
+                <input type="password" class="form-control" id="ip" name="pw">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Jelszó módosítása">
+        </form>
 </div>
 </div>
 </div>
