@@ -2,13 +2,10 @@ var mysql = require('mysql');
 var connection = require('../../config/config');
 
 function dbconnect(req, callback, data) {
-    var username = mysql.escape(data.username);
-    var password = mysql.escape(data.pw);
+    var username = data.username;
+    var password = data.pw;
 
-    // 'SELECT * FROM users WHERE user = ' + username +  ' AND pw = MD5(' + password + ')'
-    // 'INSERT INTO users (user,pw) VALUES(\'tilla\',MD5(\'Tillaiso9660\'))'
-
-    connection.query('SELECT * FROM users WHERE user = ' + username +  ' AND pw = MD5(' + password + ')', function(err,row){
+    connection.query('SELECT * FROM users WHERE user = ' + username + ' AND pw = MD5(\'' + password + '\')', function(err,row){
         if (err) {
             throw err;
         }
@@ -30,9 +27,7 @@ module.exports = function () {
 
             if (err) throw err;
             else {
-                console.log(result);
-
-                if(result.length == 0){
+                if(typeof result == 'undefined'){
                     res.tpl.alert = true;
                     return next();
                 }

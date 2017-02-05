@@ -436,3 +436,11 @@ body{
     font-weight: bold;
     color: #d9534f;
 }
+
+.table.inactive > tbody {
+    background-color: #f7e1b5;
+}
+.table-striped.inactive > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: #d9534f;
+    color: white;
+}

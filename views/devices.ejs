@@ -24,7 +24,7 @@
                 <tbody>
                 <!-- lapozó méret beállítása itt: -->
                 <% var lapozo = 30; %>
-                <% for(var i = ((page - 1) * lapozo); i < (page * lapozo) && (i < adatok.length) ; i++) { console.log(page); %>
+                <% for(var i = ((page - 1) * lapozo); i < (page * lapozo) && (i < adatok.length) ; i++) { %>
                 <tr <% if(!adatok[i].STATUS) {%> class="status" <% }%>>
                     <td><%= adatok[i].NAME %></td>
                     <td><%= adatok[i].TYPE %></td>
