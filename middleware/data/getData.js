@@ -18,6 +18,7 @@ module.exports = function (){
     return function (req, res, next) {
 
         res.tpl.page = req.param('page');
+        console.log(res.tpl.page + 'sdfgsdfgsdfg');
 
         dbconnect(function(err, results){
             if (err) throw err;

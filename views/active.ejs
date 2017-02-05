@@ -22,8 +22,8 @@
             </thead>
             <tbody>
             <!-- lapozó méret beállítása itt: -->
-            <% var lapozo = 100; %>
-            <% for(var i = ((page - 1) * lapozo); i < (page * lapozo) && (i < actives.length) ; i++) {%>
+            <% var lapozo = 100; var ppage = 1; %>
+            <% for(var i = ((ppage - 1) * lapozo); i < (ppage * lapozo) && (i < actives.length) ; i++) {%>
             <tr <% if(!actives[i].STATUS) {%> class="status" <% }%>>
                 <td><%= actives[i].NAME %></td>
                 <td><%= actives[i].TYPE %></td>
